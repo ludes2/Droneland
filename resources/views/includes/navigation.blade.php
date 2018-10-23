@@ -11,8 +11,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-
-                <form class="form w-50 order-2" >
+                <!-- SEARCH FORM -->
+                <form class="form w-50 order-2" id="searchForm">
                     <div class="input-group" id="searchBar">
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="globalSearch">
                         <div class="input-group-append">

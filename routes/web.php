@@ -29,3 +29,4 @@ Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 Route::get('/products/{category}', 'ProductController@getProducts')->name('getProducts');
 Route::get('/product/{product}', 'ProductController@getSingleProduct')->name('getSingleProduct');
 
+Route::get('/searchProduct', 'SearchController@searchProduct')->name('searchProduct');

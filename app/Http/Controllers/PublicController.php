@@ -15,11 +15,11 @@ class PublicController extends Controller
         $category = new Category();
         $categories = $category->tree();
 
-        $products = Product::all();
+        //$products = Product::all();
 
         return view('welcome', [
             'categories'    => $categories,
-            'products'      => $products
+            //'products'      => $products
         ]);
     }
 
