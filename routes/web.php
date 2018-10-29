@@ -13,6 +13,11 @@
 
 Auth::routes();
 
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::get('/', 'PublicController@index')->name('index');
@@ -22,7 +27,7 @@ Route::get('contact', 'PublicController@contact')->name('contact');
 Route::post('contact', 'PublicController@contactPost')->name('contactPost');
 
 Route::get('/add_to_cart/{id}', 'ProductController@addToCart')->name('addToCart');
-Route::get('shopping_cart', 'ProductController@getCart')->name('shoppingCart');
+Route::get('/shopping_cart', 'ProductController@getCart')->name('shoppingCart');
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 

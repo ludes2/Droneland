@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <header class="row text-right pt-5">
+    <div class="row text-right pt-5">
         <div class="sidebar-header col-sm-3 pl-5 text-left">
             <h3>Products <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon"></i></a></h3>
         </div>
@@ -14,7 +14,7 @@
                 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</span>
             </a>
         </div>
-    </header>
+    </div> <!-- SHOPPING CART ROW -->
 
     <div class="row">
 
@@ -26,7 +26,7 @@
 
             </ul>
             <!-- </nav> -->
-        </div>
+        </div> <!-- SIDEBAR -->
 
         <div class="col mx-auto px-5" id="products">
 

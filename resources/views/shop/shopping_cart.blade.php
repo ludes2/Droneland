@@ -9,7 +9,7 @@
         <div class="card-header bg-dark text-light" id="shoppingCartHeader">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             Shopping cart
-            <a href="{{ route('index') }}" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
+            <a id="shoppingCardLabel" href="{{ route('index') }}" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
             <div class="clearfix"></div>
         </div>
         <div class="card-body">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
 
@@ -23,6 +23,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+
 
 </head>
 
@@ -58,7 +60,7 @@
                     <a class="nav-link footerLink text-muted" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="list-inline-item">
-                    <a class="nav-link footerLink text-muted" href="{{ route('contact') }}">Contact</a>
+                    <a class="nav-link footerLink text-muted" href="{{ route('contact') }}">@lang('messages.contact')</a>
                 </li>
             </ul>
         </div>
@@ -122,7 +124,7 @@
 
         /* when the form is submitted, search and display products found for the given input */
         function submitSearch() {
-            $('#searchForm').submit(function (event) {
+            $('#globalSearch').submit(function (event) {
                 event.preventDefault(); // ensures that found products stay visible
 
                 var submitValue = document.getElementById('globalSearch').value;
@@ -132,7 +134,36 @@
                     url: '{{ route('searchProduct') }}',
                     data: {'search': submitValue},
                     success: function( data ) {
-                        $('#searchResults').html(data);
+                        //$('#searchResultsContent').html(data);
+
+                        // parse the search results from "searchController" into a JS object and format the output.
+                        var searchResult = JSON.parse(data);
+                        var output = '';
+                        output += "<div class='row'>";
+
+                        // display each product in a card
+                        for( var i = 0; i < searchResult.length; i++ ){
+                            output += "<div class='col-lg-3 col-md-6 mb-3'>";
+                            output += "<div class='card bg-transparent h-100 productCard'>";
+                            output += "<div class='card-header'>";
+                            output += "<h4 class='card-title'>";
+                            output += "<a href=''>" + searchResult[i].title + "</a>";
+                            output += "</h4>";
+                            output += "</div>"; // CARD-HEADER
+                            output += "<div class='card-body'>";
+                            output += "<a href='#'><img class='card-img-top' src=" + searchResult[i].thumbnail + "></a>";
+                            output += "<p class='card-text'>" + searchResult[i].short_description + "</p>";
+                            output += "</div>"; // CARD-BODY
+                            output += "<div class='card-footer'>";
+                            output += "<a>" + searchResult[i].price + "</a>";
+                            output += "<a href='#' class='btn btn-primary pull-right' role='button'>" + "Add to Cart" + "</a>";
+                            output += "</div>"; // CARD-FOOTER
+                            output += "</div>"; // CARD
+                            output += "</div>"; // COL
+                        }
+                        output += "</div>"; // ROW
+
+                        $('#searchResultsContent').html(output);
                     },
                     error: function( req, status, err ) {
                         // will be changed to display nice form that product not found
@@ -144,27 +175,58 @@
         }
 
         function liveSearch() {
-            $('#globalSearch').on('keyup', function (event) {
+            $('#productSearch').on('keyup', function () {
                 //event.preventDefault();
                 //$('#searchResults').modal('show');
 
-                $('#testJumbo').addClass('d-none'); // hide jumbotron when typing
-                $('#searchResults').removeClass('d-none'); // show searchResults when typing
+                //$('#bestseller').addClass('d-none'); // hide jumbotron when typing
+                //$('#searchResults').removeClass('d-none'); // show searchResults when typing
 
-                var value = document.getElementById('globalSearch').value;
-                $.ajax({
-                    method: 'GET',
-                    url: '{{ route('searchProduct') }}',
-                    data: {'search': value},
-                    success: function( data ) {
-                        //$('#searchResultsContent').html(data);
-                        $('#searchResults').html(data);
-                    },
-                    error: function( req, status, err ) {
-                        // will be changed to display nice form that product not found
-                        console.log( 'something went wrong', status, err );
-                    }
-                });
+                var value = document.getElementById('productSearch').value;
+                if(value.length > 0){
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route('searchProduct') }}',
+                        //dataType: 'json',
+                        data: {'search': value},
+                        success: function( data ) {
+                            // parse the search results from "searchController" into a JS object and format the output.
+                            var searchResult = JSON.parse(data);
+
+                            var output = '';
+                            output += "<div class='row'>";
+
+                            // display each product in a card
+                            for( var i = 0; i < searchResult.length; i++ ){
+                                output += "<div class='col-lg-4 col-md-6 mb-4'>";
+                                output += "<div class='card bg-transparent h-80 productCard'>";
+                                output += "<div class='card-header'>";
+                                output += "<h4 class='card-title'>";
+                                output += "<a href=''>" + searchResult[i].title + "</a>";
+                                output += "</h4>";
+                                output += "</div>"; // CARD-HEADER
+                                output += "<div class='card-body'>";
+                                output += "<a href=''><img class='card-img-top' src=" + searchResult[i].thumbnail + "></a>";
+                                output += "<p class='card-text'>" + searchResult[i].short_description + "</p>";
+                                output += "</div>"; // CARD-BODY
+                                output += "<div class='card-footer'>";
+                                output += "<a>" + searchResult[i].price + "</a>";
+                                output += "<a href='#' class='btn btn-primary pull-right' role='button'>" + "Add to Cart" + "</a>";
+                                output += "</div>"; // CARD-FOOTER
+                                output += "</div>"; // CARD
+                                output += "</div>"; // COL
+                            }
+                            output += "</div>"; // ROW
+
+                            $('#searchResultsContent').html(output);
+                        },
+                        error: function( req, status, err ) {
+                            // will be changed to display nice form that product not found
+                            console.log( 'something went wrong', status, err );
+                        }
+                    });
+                }
+
             })
         }
     });

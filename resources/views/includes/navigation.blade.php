@@ -11,8 +11,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
+                <button type="button" class="btn btn-primary order-2" data-toggle="modal" data-target="#exampleModalCenter">
+                    Advanced Search
+                </button>
+
                 <!-- SEARCH FORM -->
-                <form class="form w-50 order-2" id="searchForm">
+                <form class="form w-50 order-3" id="searchForm">
                     <div class="input-group" id="searchBar">
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="globalSearch">
                         <div class="input-group-append">
@@ -21,55 +26,55 @@
                     </div>
                 </form>
 
-                <div class="collapse navbar-collapse w-100 order-3" id="navbarResponsive">
 
-                            <ul class="navbar-nav ml-auto">
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">DE</a>
-                                </li>
+                <div class="collapse navbar-collapse w-100 order-4" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">EN</a>
-                                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="locale/de">DE</a>
+                        </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <i class="fa fa-video-camera"></i> Videos</a>
-                                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="locale/en">EN</a>
+                        </li>
 
-                                {{--<li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <i class="fa fa-shopping-cart"></i>  Shopping Cart
-                                    </a>
-                                </li>--}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-video-camera"></i> Videos</a>
+                        </li>
 
-                                <!-- yields only if the user is logged in -->
-                                @if(Auth::check())
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
-                                    </li>
+                        {{--<li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa fa-shopping-cart"></i>  Shopping Cart
+                            </a>
+                        </li>--}}
 
-                                    <li class="nav-item">
-                                        <form method="POST" id="logout-form" action="{{ route('logout') }}">@csrf</form>
-                                        <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
-                                    </li>
+                        <!-- yields only if the user is logged in -->
+                        @if(Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                            </li>
 
-                                @else
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">
-                                            <i class="fa fa-user"></i> Login</a>
-                                    </li>
+                            <li class="nav-item">
+                                <form method="POST" id="logout-form" action="{{ route('logout') }}">@csrf</form>
+                                <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                            </li>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">
-                                            <i class="fa fa-user"></i> Register</a>
-                                    </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    <i class="fa fa-user"></i> Login</a>
+                            </li>
 
-                                @endif
-                            </ul>
-                        </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">
+                                    <i class="fa fa-user"></i> Register</a>
+                            </li>
 
+                        @endif
+                    </ul>
+                </div>
             </div> <!-- /.container-fluid -->
         </nav>
 
