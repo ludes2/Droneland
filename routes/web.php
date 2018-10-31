@@ -18,6 +18,15 @@ Route::get('locale/{locale}', function ($locale){
     return redirect()->back();
 });
 
+/*Route::prefix('user')->group(function(){
+    Route::get('account', 'UserController@account')->name('userAccount');
+});*/
+
+Route::get('account', 'UserController@userAccount')->name('userAccount');
+
+
+
+
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::get('/', 'PublicController@index')->name('index');

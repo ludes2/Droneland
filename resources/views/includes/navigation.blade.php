@@ -53,7 +53,7 @@
                         <!-- yields only if the user is logged in -->
                         @if(Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="nav-link" href="{{ route('userAccount') }}">Account</a>
                             </li>
 
                             <li class="nav-item">
