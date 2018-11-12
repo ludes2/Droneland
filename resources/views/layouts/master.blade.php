@@ -134,7 +134,6 @@
                     url: '{{ route('searchProduct') }}',
                     data: {'search': submitValue},
                     success: function( data ) {
-                        //$('#searchResultsContent').html(data);
 
                         // parse the search results from "searchController" into a JS object and format the output.
                         var searchResult = JSON.parse(data);
@@ -166,6 +165,7 @@
                         $('#searchResultsContent').html(output);
                     },
                     error: function( req, status, err ) {
+
                         // will be changed to display nice form that product not found
                         console.log( 'something went wrong', status, err );
                     }
@@ -176,11 +176,6 @@
 
         function liveSearch() {
             $('#productSearch').on('keyup', function () {
-                //event.preventDefault();
-                //$('#searchResults').modal('show');
-
-                //$('#bestseller').addClass('d-none'); // hide jumbotron when typing
-                //$('#searchResults').removeClass('d-none'); // show searchResults when typing
 
                 var value = document.getElementById('productSearch').value;
                 if(value.length > 0){
@@ -190,6 +185,7 @@
                         //dataType: 'json',
                         data: {'search': value},
                         success: function( data ) {
+
                             // parse the search results from "searchController" into a JS object and format the output.
                             var searchResult = JSON.parse(data);
 
@@ -221,6 +217,7 @@
                             $('#searchResultsContent').html(output);
                         },
                         error: function( req, status, err ) {
+
                             // will be changed to display nice form that product not found
                             console.log( 'something went wrong', status, err );
                         }

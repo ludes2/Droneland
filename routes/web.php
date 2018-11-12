@@ -22,7 +22,7 @@ Route::get('locale/{locale}', function ($locale){
     Route::get('account', 'UserController@account')->name('userAccount');
 });*/
 
-Route::get('account', 'UserController@userAccount')->name('userAccount');
+Route::get('userAccount', 'UserController@userAccount')->name('userAccount');
 
 
 
@@ -44,3 +44,12 @@ Route::get('/products/{category}', 'ProductController@getProducts')->name('getPr
 Route::get('/product/{product}', 'ProductController@getSingleProduct')->name('getSingleProduct');
 
 Route::get('/searchProduct', 'SearchController@searchProduct')->name('searchProduct');
+
+Route::get('adminAccount', 'AdminController@adminAccount')->name('adminAccount');
+Route::get('editUser', 'AdminController@editUser')->name('editUser');
+Route::post('editUser/{id}', 'AdminController@editUserPost')->name('editUserPost');
+Route::post('deleteUser/{id}', 'AdminController@deleteUser')->name('deleteUser');
+
+Route::get('editProduct', 'AdminController@editProduct')->name('editProduct');
+Route::post('editProduct/{id}', 'AdminController@editProductPost')->name('editProductPost');
+Route::post('deleteProduct/{id}', 'AdminController@deleteProduct')->name('deleteProduct');

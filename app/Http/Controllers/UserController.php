@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,6 +12,6 @@ class UserController extends Controller
     }
 
     public function userAccount(){
-        return view('user.account');
+        return view('user.user_account');
     }
 }

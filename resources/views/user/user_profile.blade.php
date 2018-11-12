@@ -1,4 +1,4 @@
-<div class="row pt-5 justify-content-lg-center">
+<div class="row pt-4 justify-content-lg-center">
     <div class="col-md-10">
         <div class="card">
             <div class="card-header bg-light">

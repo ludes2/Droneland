@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="content py-5">
+<div class="content py-4">
     <div class="card shopping-cart">
         <div class="card-header bg-dark text-light" id="shoppingCartHeader">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>

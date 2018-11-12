@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') User Account @endsection
+@section('title') Account @endsection
 
 @section('content')
 
@@ -14,6 +14,6 @@
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="home-tab">@include('user.user_profile')</div>
-    <div class="tab-pane fade" id="dashboard" role="tabpanel" aria-labelledby="profile-tab">...</div>
+    <div class="tab-pane fade" id="dashboard" role="tabpanel" aria-labelledby="profile-tab">...</div> <!-- include the dashboard of the specific user -->
 </div>
 @endsection

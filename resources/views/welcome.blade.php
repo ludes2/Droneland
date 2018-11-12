@@ -102,9 +102,6 @@
 
 
 
-
-
-
 <div class="row">
     <div class="col mx-auto px-5">
         <!-- Modal FOR SEARCH RESULTS-->
@@ -132,7 +129,7 @@
                         </button>
                     </div>
                     <div class="modal-body" id="searchResultsContent">
-
+                        <!-- SEARCH RESULTS ARE SHOWN HERE VIA AJAX -->
                     </div>
                 </div>
             </div>

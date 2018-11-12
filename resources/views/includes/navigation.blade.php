@@ -12,7 +12,7 @@
                 </button>
 
 
-                <button type="button" class="btn btn-primary order-2" data-toggle="modal" data-target="#exampleModalCenter">
+                <button type="button" id="btn_adv_search" class="btn btn-primary order-2" data-toggle="modal" data-target="#exampleModalCenter">
                     Advanced Search
                 </button>
 
@@ -52,15 +52,19 @@
 
                         <!-- yields only if the user is logged in -->
                         @if(Auth::check())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('userAccount') }}">Account</a>
-                            </li>
-
+                            @if(Auth::user()->admin == true)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('adminAccount') }}">Account</a>
+                                </li>
+                                @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('userAccount') }}">Account</a>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 <form method="POST" id="logout-form" action="{{ route('logout') }}">@csrf</form>
                                 <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
                             </li>
-
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
@@ -71,7 +75,6 @@
                                 <a class="nav-link" href="{{ route('register') }}">
                                     <i class="fa fa-user"></i> Register</a>
                             </li>
-
                         @endif
                     </ul>
                 </div>

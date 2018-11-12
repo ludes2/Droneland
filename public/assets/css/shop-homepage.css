@@ -92,17 +92,9 @@
   cursor: pointer; /* Cursor on hover */
 }
 
-/*
-.carousel-inner{
-  width: 100%;
-  height: 720px;
+#btn_adv_search{
+  margin: 1em;
 }
-.carousel-inner img{
-  width: 100%;
-  hegith: 100%;
-}
-*/
-
 
 
 .carousel-inner img {

@@ -15,15 +15,7 @@ class SearchController extends Controller
 
             if(strlen($userInput) > 0){
                $searchOutput = Product::where('title', 'LIKE', '%' . $userInput . '%')->get();
-
-                /*return view('shop.search_results', [
-                    'products_found'      => $searchOutput
-                ]);*/
-
                 return response(json_encode($searchOutput));
-
-
-
             }
 
         }
