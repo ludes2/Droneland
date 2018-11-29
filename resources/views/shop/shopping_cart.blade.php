@@ -4,14 +4,16 @@
 
 @section('content')
 
-<div class="content py-4">
+<div class="content py-5">
     <div class="card shopping-cart">
         <div class="card-header bg-dark text-light" id="shoppingCartHeader">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             Shopping cart
             <a id="shoppingCardLabel" href="{{ route('index') }}" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
             <div class="clearfix"></div>
-        </div>
+        </div> <!-- end of card-header -->
+
+        <form method="GET" id="cart_quantity" action="{{ route('refreshCart') }}">@csrf
         <div class="card-body">
             <!-- PRODUCTS -->
             @if(Session::has('cart'))
@@ -33,42 +35,47 @@
                         <div class="col-4 col-sm-4 col-md-4 pt-2">
                             <div class="quantity">
                                 <!--<input type="button" value="+" class="plus">-->
-                                <input type="number" step="1" max="99" min="1" value="{{ $product['quantity'] }}" title="Quantity" class="qty"
+
+                                <input type="number" step="1" max="99" min="1" value="{{ $product['quantity'] }}" name="quantity_of_{{ $product['item']['id'] }}" class="qty"
                                        size="4">
+
                                 <!--<input type="button" value="-" class="minus">-->
                             </div>
                         </div>
                         <div class="col-2 col-sm-2 col-md-2 text-right pt-2">
-                            <button type="button" class="btn btn-outline-danger btn-xs">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
+                            <form method="GET" id="product-{{ $product['item']['id'] }}" action="{{ route('removeFromCart', $product['item']['id']) }}">@csrf
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            </form>
                         </div>
                     </div>
-                </div>
+                </div> <!-- end of row -->
                 @endforeach
                 <hr>
                 <!-- END OF PRODUCTS -->
 
                 <div class="pull-right">
-                    <a href="" class="btn btn-outline-secondary pull-right">
+                    <button onclick="document.getElementById('cart_quantity').submit();" class="btn btn-outline-secondary pull-right">
                         Update shopping cart
-                    </a>
-                </div>
+                    </button>
+                </div> <!-- end of pull-right button "update shopping cart" -->
 
-                </div>
-                <div class="card-footer">
+                @else
+                    <div class="row">
+                        Your shopping cart is empty
+                    </div>
+                @endif
+
+                </div> <!-- end of card-body -->
+
+            <div class="card-footer">
                     <div class="pull-right px-3">
                         <a href="{{ route('checkout') }}" class="btn btn-primary pull-right">Checkout</a>
                         <div class="pull-right px-2">
                             Total price: <b>{{ number_format($totalPrice, 0, ',', "'") }}</b>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    @else
-        <div class="row">
-            Your shopping cart is empty
-        </div>
-    @endif
+                </div> <!-- end of card-footer -->
+        </form> <!-- end of form cart_quantity -->
+    </div> <!-- end of shopping cart -->
+</div> <!-- end of content -->
 @endsection

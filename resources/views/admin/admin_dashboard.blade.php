@@ -3,7 +3,6 @@
 @section('title') Account @endsection
 
 @section('content')
-
     <ul class="nav nav-tabs pt-5" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="users_tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>
@@ -18,6 +17,7 @@
     </div>
 
     <!-- Modal FOR USER EDITING-->
+    <form action="{{ route('editUserPost') }}" method="POST" enctype="multipart/form-data">@csrf
     <div class="row">
         <div class="col mx-auto px-5">
             <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,12 +36,12 @@
                         </div>
 
                         <!-- USER INFORMATION DISPLAYED HERE -->
-                        <div class="modal-body" id="editUserContent">
+                            <div class="modal-body" id="editUserContent">
 
-                        </div>
+                            </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
@@ -49,8 +49,10 @@
             </div>
         </div>
     </div>
+    </form>
 
     <!-- Modal FOR Product EDITING-->
+    <form action="{{ route('editProductPost') }}" method="POST" enctype="multipart/form-data">@csrf
     <div class="row">
         <div class="col mx-auto px-5">
             <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,7 +76,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
@@ -82,16 +84,11 @@
             </div>
         </div>
     </div>
+    </form>
+@endsection
 
-
-
-
+@push('scripts')
     <script>
-        const formatter = new Intl.NumberFormat('de-CH', {
-            style: 'currency',
-            currency: 'CHF',
-            minimumFractionDigits: 2
-        });
         openEditUserModal();
         openEditProductModal();
 
@@ -108,9 +105,17 @@
 
                         // parse the data received from the "adminController" into a JS object and format the output
                         var userData = JSON.parse(data);
+                        var checked = '';
+                        if (userData[0].admin == 1) { checked = "checked"; }
                         var output = '';
-                        output += "<form action='#' method='POST'>";
+
                         output += "<div class='row'>";
+                        output += "<div class='col-1'>";
+                        output += "<div class='form-group'>";
+                        output += "<label for='id' class='form-control-label'>ID</label>";
+                        output += "<input readonly name='id' id='id' class='form-control' value='"+ userData[0].id +"'>";
+                        output += "</div>"; // FORM-GROUP
+                        output += "</div>"; // COL
                         output += "<div class='col'>";
                         output += "<div class='form-group'>";
                         output += "<label for='name' class='form-control-label'>Name</label>";
@@ -123,18 +128,19 @@
                         output += "<input name='email' type='email' id='email' class='form-control' value='"+ userData[0].email +"'>";
                         output += "</div>"; // FORM-GROUP
                         output += "</div>"; // COL
+                        output += "</div>"; // ROW
+                        output += "<div class='row'>";
                         output += "<div class='col'>";
                         output += "<div class='form-check'>";
-                        output += "<input type='checkbox' class='form-check-input' name='admin' value=1>";
+                        output += "<input type='checkbox' class='form-check-input' name='admin' value='1' " + checked + ">";
                         output += "<label for='admin' class='form-check-label'>Admin</label>";
                         output += "</div>"; // FORM-CHECK
                         output += "<div class='form-check'>";
-                        output += "<input type='checkbox' class='form-check-input' name='status' value=1>";
+                        output += "<input type='checkbox' class='form-check-input' name='status' value='1'>";
                         output += "<label for='status' class='form-check-label'>Disable User</label>";
                         output += "</div>"; // FORM-CHECK
                         output += "</div>"; // COL
                         output += "</div>"; // ROW
-                        output += "</form>";
 
                         $('#editUserContent').html(output);
                         $('#editUserModal').modal('show');
@@ -165,7 +171,7 @@
                         var productData = JSON.parse(data);
 
                         var output = '';
-                        output += "<form action='#' method='POST'>";
+
                         output += "<div class='row'>";
                         output += "<div class='col'>";
                         output += "<div class='form-group'>";
@@ -178,47 +184,67 @@
                         output += "</div>"; // COL
                         output += "</div>"; // ROW
                         output += "<div class='row'>"
+                        output += "<div class='col-1'>";
+                        output += "<div class='form-group'>";
+                        output += "<label for='id' class='form-control-label'>ID</label>";
+                        output += "<input readonly name='id' id='id' class='form-control' value='"+ productData[0].id +"'>";
+                        output += "</div>"; // FORM-GROUP
+                        output += "</div>"; // COL
                         output += "<div class='col'>";
                         output += "<div class='form-group'>";
                         output += "<label for='title' class='form-control-label'>Title</label>";
                         output += "<input name='title' id='title' class='form-control' value='"+ productData[0].title +"'>";
                         output += "</div>"; // FORM-GROUP
                         output += "</div>"; // COL
-                        output += "<div class='col'>";
+                        output += "<div class='col-2'>";
                         output += "<div class='form-group'>";
                         output += "<label for='price' class='form-control-label'>" + "Price" + "</label>";
-                        output += "<input name='price' type='price' id='price' class='form-control' value='"+ formatter.format(productData[0].price) +"'>";
+                        output += "<input name='price' type='price' id='price' class='form-control' value='"+ productData[0].price +"'>";
                         output += "</div>"; // FORM-GROUP
                         output += "</div>"; // COL
                         output += "<div class='col'>";
                         output += "<div class='form-group'>";
                         output += "<label for='category' class='form-control-label'>" + "Category" + "</label>";
-                        output += "<input name='category' type='category' id='category' class='form-control' value='"+ productData[0].category +"'>";
+                        output += "<div class='input-group'>";
+                        output += "<div class='input-group-prepend'>";
+                        output += "<button class='btn btn-outline-secondary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Please select</button>";
+                        output += "<div id='editDropdownCategories' class='dropdown-menu'>";
+                        // foreach
+                        //output += "<a id='category-id' class='dropdown-item' href=#>" + "CATEGORY" + "</a>";
+                        @foreach($categories as $category)
+                            output += "<a id='{{ $category->id }}' class='dropdown-item'' href='#'>{{ $category->name }}</a>";
+                        @endforeach
+                        output += "</div>"; // BUTTON
+                        output += "</div>"; // FORM-GROUP-PREPEND
+                        output += "<input name='editInputCategory' type='text' id='editInputCategory' readonly class='form-control' value='"+ productData[0].category +"'>";
+                        output += "</div>"; // INPUT-GROUP
                         output += "</div>"; // FORM-GROUP
                         output += "</div>"; // COL
-                        output += "</div>"; // ROW
                         output += "</div>"; // ROW
                         output += "<div class='row'>"
                         output += "<div class='col'>";
                         output += "<div class='form-group'>";
                         output += "<label for='short-description' class='form-control-label'>" + "Short Description" + "</label>";
-                        output += "<textarea rows='3' name='short-description' id='short-description' class='form-control' value='"+ productData[0].short_description +"'></textarea>";
+                        output += "<textarea rows='3' name='short-description' id='short-description' class='form-control'>"+ productData[0].short_description +"</textarea>";
                         output += "</div>"; // FORM-GROUP
                         output += "</div>"; // COL
-                        output += "</div>"; // ROW
                         output += "</div>"; // ROW
                         output += "<div class='row'>"
                         output += "<div class='col'>";
                         output += "<div class='form-group'>";
                         output += "<label for='full-description' class='form-control-label'>" + "Full Description" + "</label>";
-                        output += "<textarea rows='5' name='full-description' id='full-description' class='form-control' value='"+ productData[0].full_description +"'></textarea>";
+                        output += "<textarea rows='5' name='full-description' id='full-description' class='form-control'>"+ productData[0].full_description +"</textarea>";
                         output += "</div>"; // FORM-GROUP
                         output += "</div>"; // COL
                         output += "</div>"; // ROW
-                        output += "</form>";
 
                         $('#editProductContent').html(output);
                         $('#editProductModal').modal('show');
+
+                        // show chosen category from dropdown in input field
+                        $('#editDropdownCategories').on('click', "a", function () {
+                            $('#editInputCategory').attr('value', $(this).text());
+                        });
                     },
                     error: function( req, status, err ) {
 
@@ -228,7 +254,6 @@
                 });
             });
         }
-
     </script>
+@endpush
 
-@endsection

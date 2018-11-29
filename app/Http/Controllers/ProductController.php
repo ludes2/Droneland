@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use App\Cart;
 use App\Category;
@@ -17,8 +18,47 @@ class ProductController extends Controller
         $cart->add($product, $product->id);
 
         $request->session()->put('cart', $cart);
-        // dd($request->session()->get('cart'));
-        return redirect()->route('index');
+        return back();
+    }
+
+    public function removeFromCart($id){
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->remove($id);
+        session()->put('cart', $cart);
+        return back();
+    }
+
+    public function refreshCart(Request $request){
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        foreach ($oldCart->items as $item){
+            if ( $item['quantity'] < $request->input('quantity_of_' . $item['item']['id']) ){
+                $cart = new Cart($oldCart);
+                $diff = intval($request->input('quantity_of_' . $item['item']['id']) - intval($item['quantity']));
+                for($i = 1; $i <= $diff; $i++){
+                    $cart->add($item['item'], $item['item']['id']);
+                }
+            } elseif ( $item['quantity'] > $request->input('quantity_of_' . $item['item']['id']) ){
+                $cart = new Cart($oldCart);
+                $diff = intval($item['quantity']) - intval($request->input('quantity_of_' . $item['item']['id']));
+                for($i = 1; $i <= $diff; $i++){
+                    $cart->remove($item['item']['id']);
+                }
+            } else{
+                $cart = new Cart($oldCart);
+            }
+            $request->session()->put('cart', $cart);
+            return back();
+        }
+
+
+
+
+        //var_dump($request);
+
+
+        //$cart = new Cart($oldCart);
+        //dd($request);
     }
 
     public function getCart(){
@@ -52,7 +92,7 @@ class ProductController extends Controller
         $categories = $category->tree();
 
         $products = Product::where('category', $cat)->get();
-        // dd($products);
+
         return view('shop.products', [
             'categories'    => $categories,
             'products'      => $products

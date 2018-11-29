@@ -22,10 +22,7 @@ Route::get('locale/{locale}', function ($locale){
     Route::get('account', 'UserController@account')->name('userAccount');
 });*/
 
-Route::get('userAccount', 'UserController@userAccount')->name('userAccount');
-
-
-
+Route::get('myAccount', 'UserController@myAccount')->name('myAccount');
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
@@ -36,7 +33,10 @@ Route::get('contact', 'PublicController@contact')->name('contact');
 Route::post('contact', 'PublicController@contactPost')->name('contactPost');
 
 Route::get('/add_to_cart/{id}', 'ProductController@addToCart')->name('addToCart');
+Route::get('/remove_from_cart/{id}', 'ProductController@removeFromCart')->name('removeFromCart');
 Route::get('/shopping_cart', 'ProductController@getCart')->name('shoppingCart');
+Route::get('/shopping_cart_actual', 'ProductController@refreshCart')->name('refreshCart');
+
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 
@@ -45,11 +45,11 @@ Route::get('/product/{product}', 'ProductController@getSingleProduct')->name('ge
 
 Route::get('/searchProduct', 'SearchController@searchProduct')->name('searchProduct');
 
-Route::get('adminAccount', 'AdminController@adminAccount')->name('adminAccount');
+Route::get('adminDashboard', 'AdminController@adminDashboard')->name('adminDashboard');
 Route::get('editUser', 'AdminController@editUser')->name('editUser');
-Route::post('editUser/{id}', 'AdminController@editUserPost')->name('editUserPost');
+Route::post('editUser', 'AdminController@editUserPost')->name('editUserPost');
 Route::post('deleteUser/{id}', 'AdminController@deleteUser')->name('deleteUser');
 
 Route::get('editProduct', 'AdminController@editProduct')->name('editProduct');
-Route::post('editProduct/{id}', 'AdminController@editProductPost')->name('editProductPost');
+Route::post('editProduct', 'AdminController@editProductPost')->name('editProductPost');
 Route::post('deleteProduct/{id}', 'AdminController@deleteProduct')->name('deleteProduct');

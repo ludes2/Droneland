@@ -41,7 +41,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-control-label">Name</label>
-                                        <input name="name" class="form-control" >
+                                        <input name="name" class="form-control" value="{{ $user->name }}">
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-control-label">Email Address</label>
-                                        <input name="email" class="form-control" >
+                                        <input name="email" class="form-control" value="{{ $user->email }}">
                                     </div>
                                 </div>
                             </div>

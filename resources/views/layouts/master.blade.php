@@ -10,40 +10,37 @@
 
     <title>@yield('title')</title>
 
+
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
     <link href="{{ asset('assets/css/shop-homepage.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
+  {{-- <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>--}}
 
 
 </head>
-
-
 
 <body>
 
 @include('includes.navigation')
 
-
 <div class="container-fluid py-3" id="mainContainer">
     @yield('content')
 </div>
 
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- custom scripts -->
 
 
 
-
-
+<!-- INCLUDE SCRIPTS OF SUB VIEWS -->
+@stack('scripts')
 
 <!-- Footer -->
 <footer class="py-3 bg-dark">
@@ -101,134 +98,6 @@
     <!-- /.container -->
 </footer>
 
-
-
-
-
-
-{{--<!-- Bootstrap core JavaScript -->
-<script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>--}}
-
 </body>
-
-
-<!-- TEST SCRIPT FOR AJAX LIVE SEARCH -->
-<script>
-    $(document).ready(function () {
-
-        //submitSearch();
-
-        liveSearch();
-
-
-        /* when the form is submitted, search and display products found for the given input */
-        function submitSearch() {
-            $('#globalSearch').submit(function (event) {
-                event.preventDefault(); // ensures that found products stay visible
-
-                var submitValue = document.getElementById('globalSearch').value;
-
-                $.ajax({
-                    method: 'GET',
-                    url: '{{ route('searchProduct') }}',
-                    data: {'search': submitValue},
-                    success: function( data ) {
-
-                        // parse the search results from "searchController" into a JS object and format the output.
-                        var searchResult = JSON.parse(data);
-                        var output = '';
-                        output += "<div class='row'>";
-
-                        // display each product in a card
-                        for( var i = 0; i < searchResult.length; i++ ){
-                            output += "<div class='col-lg-3 col-md-6 mb-3'>";
-                            output += "<div class='card bg-transparent h-100 productCard'>";
-                            output += "<div class='card-header'>";
-                            output += "<h4 class='card-title'>";
-                            output += "<a href=''>" + searchResult[i].title + "</a>";
-                            output += "</h4>";
-                            output += "</div>"; // CARD-HEADER
-                            output += "<div class='card-body'>";
-                            output += "<a href='#'><img class='card-img-top' src=" + searchResult[i].thumbnail + "></a>";
-                            output += "<p class='card-text'>" + searchResult[i].short_description + "</p>";
-                            output += "</div>"; // CARD-BODY
-                            output += "<div class='card-footer'>";
-                            output += "<a>" + searchResult[i].price + "</a>";
-                            output += "<a href='#' class='btn btn-primary pull-right' role='button'>" + "Add to Cart" + "</a>";
-                            output += "</div>"; // CARD-FOOTER
-                            output += "</div>"; // CARD
-                            output += "</div>"; // COL
-                        }
-                        output += "</div>"; // ROW
-
-                        $('#searchResultsContent').html(output);
-                    },
-                    error: function( req, status, err ) {
-
-                        // will be changed to display nice form that product not found
-                        console.log( 'something went wrong', status, err );
-                    }
-
-                });
-            })
-        }
-
-        function liveSearch() {
-            $('#productSearch').on('keyup', function () {
-
-                var value = document.getElementById('productSearch').value;
-                if(value.length > 0){
-                    $.ajax({
-                        method: 'GET',
-                        url: '{{ route('searchProduct') }}',
-                        //dataType: 'json',
-                        data: {'search': value},
-                        success: function( data ) {
-
-                            // parse the search results from "searchController" into a JS object and format the output.
-                            var searchResult = JSON.parse(data);
-
-                            var output = '';
-                            output += "<div class='row'>";
-
-                            // display each product in a card
-                            for( var i = 0; i < searchResult.length; i++ ){
-                                output += "<div class='col-lg-4 col-md-6 mb-4'>";
-                                output += "<div class='card bg-transparent h-80 productCard'>";
-                                output += "<div class='card-header'>";
-                                output += "<h4 class='card-title'>";
-                                output += "<a href=''>" + searchResult[i].title + "</a>";
-                                output += "</h4>";
-                                output += "</div>"; // CARD-HEADER
-                                output += "<div class='card-body'>";
-                                output += "<a href=''><img class='card-img-top' src=" + searchResult[i].thumbnail + "></a>";
-                                output += "<p class='card-text'>" + searchResult[i].short_description + "</p>";
-                                output += "</div>"; // CARD-BODY
-                                output += "<div class='card-footer'>";
-                                output += "<a>" + searchResult[i].price + "</a>";
-                                output += "<a href='#' class='btn btn-primary pull-right' role='button'>" + "Add to Cart" + "</a>";
-                                output += "</div>"; // CARD-FOOTER
-                                output += "</div>"; // CARD
-                                output += "</div>"; // COL
-                            }
-                            output += "</div>"; // ROW
-
-                            $('#searchResultsContent').html(output);
-                        },
-                        error: function( req, status, err ) {
-
-                            // will be changed to display nice form that product not found
-                            console.log( 'something went wrong', status, err );
-                        }
-                    });
-                }
-
-            })
-        }
-    });
-
-
-</script>
 
 </html>

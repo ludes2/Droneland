@@ -2,11 +2,7 @@
 
 @section('title') The Shop - Home @endsection
 
-
-
 @section('content')
-<!-- Page Content -->
-
 <div class="row text-right pt-5">
     <div class="sidebar-header col-sm-3 pl-5 text-left">
         <h3>@lang('messages.products') <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon"></i></a></h3>
@@ -19,11 +15,12 @@
     </div>
 </div>
 
+<!-- SIDE NAVIGATION -->
 <div class="row">
     <div class="collapse show" id="sidebar">
-            <ul class="sieNagivation list-unstyled">
-                @each('partials.sideNavigation', $categories, 'category')
-            </ul>
+        <ul class="sieNavigation list-unstyled">
+            @each('partials.sideNavigation', $categories, 'category')
+        </ul>
     </div>
 
     <!-- BESTSELLER CARD-CAROUSEL -->
@@ -101,152 +98,12 @@
     </div>
 
 
-
-<div class="row">
-    <div class="col mx-auto px-5">
-        <!-- Modal FOR SEARCH RESULTS-->
-        <div class="modal fade" id="searchResults" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="row">
-                            <div class="col-6">
-                                <h6 class="modal-title" id="exampleModalLabel">Search Products by name</h6>
-                            </div>
-                            <div class="col-6 w-100 pull-right">
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="productSearch">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-sm" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" id="searchResultsContent">
-                        <!-- SEARCH RESULTS ARE SHOWN HERE VIA AJAX -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-{{--    <div class="col mx-auto px-5 d-none"  id="searchResults">
-    @if(isset($products_found))
-        @include('shop.search_results')
-    @endif
-    </div>--}}
-
-
 </div> <!-- end of row -->
 
-<!-- MODAL ADVANCED SEARCH -->
-<div class="row">
-    <div class="col">
-        <form action="#">
+@endsection
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Search for ...</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="inputBrand">Hersteller</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please select</button>
-                                                <div class="dropdown-menu">
-                                                    <a id="action" class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                </div>
-                                            </div>
-                                            <input id="inputBrand" type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        </div>
-                                    </div> <!-- FORM-GROUP Brandname -->
-                                </div> <!-- COL -->
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="inputCategory">Category</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please select</button>
-                                                <div id="dropdownCategories" class="dropdown-menu">
-                                                    @foreach($categories as $category)
-                                                    <a id="{{ $category->id }}" class="dropdown-item" href="#">{{ $category->name }}</a>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                            <input id="inputCategory" type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        </div>
-                                    </div> <!-- FORM-GROUP Category -->
-                                </div> <!-- COL -->
-                            </div> <!-- ROW -->
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="inputTitle">Product Title</label>
-                                        <div class="input-group">
-                                            <input id="inputTitle" type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        </div>
-                                    </div> <!-- FORM-GROUP TITLE -->
-                                </div> <!-- COL -->
-                                <?php
-                                foreach ($products as $product) { $prices[] = $product->price; }
-                                ?>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="maxPrice">max Price: <span id="price"></span></label>
-                                        <!-- <div class="input-group"> -->
-                                        <div class="slideContainer">
-                                            <input id="maxPrice" type="range" min="1" max="{{ max($prices) }}" value="1" class="slider">
-                                        </div>
-                                        <!-- </div> -->
-                                    </div> <!-- FORM-GROUP Price -->
-                                </div> <!-- COL -->
-                            </div> <!-- ROW -->
-
-
-
-
-                        </div> <!-- MODAL-BODY -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </form> <!-- FORM ADVANCED SEARCH -->
-
-    </div>
-
-</div> <!-- ROW MODAL ADVANCED SEARCH -->
-
+@push('scripts')
     <script>
-
         /* Function for Besteller Carousel */
         $("#myCarousel").on("slide.bs.carousel", function(e) {
             var e = $(e.relatedTarget); // get the secondary target for the event
@@ -271,40 +128,5 @@
                 }
             }
         });
-
-
-        $('#dropdownCategories').on('click', "a", function () {
-           $('#inputCategory').attr('value', $(this).text());
-        });
-
-        const formatter = new Intl.NumberFormat('de-CH', {
-           style: 'currency',
-            currency: 'CHF',
-            minimumFractionDigits: 2
-        });
-
-        var slider = document.getElementById("maxPrice");
-        var output = document.getElementById("price");
-        output.innerHTML = formatter.format(slider.value); // Display the default slider value
-
-        // Update the current slider value (each time you drag the slider handle)
-        slider.oninput = function() {
-            output.innerHTML = formatter.format(this.value);
-        }
-
-
-        // open bootstrap modal when clicking on the search input field
-        $('#globalSearch').on('click', function () {
-            $('#searchResults').modal('show');
-        });
-
-        // focus on input as soon as modal "searchResults" is shown
-        $('#searchResults').on('shown.bs.modal', function () {
-            $('#productSearch').trigger('focus')
-        })
-
     </script>
-
-
-
-@endsection
+@endpush

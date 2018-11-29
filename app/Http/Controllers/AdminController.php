@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Http\Requests\UserUpdate;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -14,12 +16,14 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function adminAccount(){
+    public function adminDashboard(){
         $users = User::all();
         $products = Product::paginate(10);
-        return view('admin.admin_account', [
-            'users'     => $users,
-            'products'  => $products
+        $categories = Category::all();
+        return view('admin.admin_dashboard', [
+            'users'         => $users,
+            'products'      => $products,
+            'categories'    => $categories
         ]);
     }
 
@@ -39,8 +43,33 @@ class AdminController extends Controller
         }
     }
 
-    public function editProductPost(){
+    public function editProductPost(Request $request){
+        $product = Product::findOrFail($request['id']);
+        $this->validate($request, [
+            'title'         => 'required|string',
+            'thumbnail'     => 'file',
+            'price'         => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+            'editInputCategory' => 'required',
+            'short_description' => 'nullable|string',
+            'full_description'  => 'nullable|string'
+        ]);
 
+        $product->title = $request['title'];
+        $product->price = $request['price'];
+        $product->category = $request['editInputCategory'];
+        ( !empty($request['short-description']) ) ? $product->short_description = $request['short-description'] : $product->short_description = '';
+        ( !empty($request['full-description']) ) ? $product->full_description = $request['full-description'] : $product->full_description = '';
+
+        if ($request->hasFile('thumbnail')){
+            $thumbnail = $request->file('thumbnail');
+            $fileName = $thumbnail->getClientOriginalName();
+            $thumbnail->move('imgs/products', $fileName);
+            $product->thumbnail = 'imgs/products/' . $fileName;
+        }
+
+        $product->save();
+        //return dd($request);
+        return back()->with('successProductUpdate', 'Product updated successfully');
     }
 
     public function deleteProduct($id){
@@ -57,8 +86,20 @@ class AdminController extends Controller
         }
     }
 
-    public function editUserPost(){
+    public function editUserPost(UserUpdate $request){
+        $user = User::where('id', $request['id'])->first();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
 
+        if ($request['admin'] == 1){
+            $user->admin = true;
+        } else {
+            $user->admin = false;
+        }
+
+        $user->save();
+
+        return back()->with('successUserUpdate', 'User updated successfully');
     }
 
     public function deleteUser($id){

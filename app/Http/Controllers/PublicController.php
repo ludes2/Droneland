@@ -12,15 +12,17 @@ class PublicController extends Controller
 
     public function index(){
 
-        $category = new Category();
-        $categories = $category->tree();
+        //$category = new Category();
+        //$categories = $category->tree();
 
-        $products = Product::all();
+        //$products = Product::all();
 
-        return view('welcome', [
+        /*return view('welcome', [
             'categories'    => $categories,
             'products'      => $products
-        ]);
+        ]);*/
+
+        return view('welcome');
     }
 
     public function about(){
