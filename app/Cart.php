@@ -30,6 +30,13 @@ class Cart
         $this->totalPrice += $item->price;
     }
 
+    public function reduceByOne($id){
+        $this->items[$id]['quantity']--;
+        $this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+        $this->totalQuantity--;
+        $this->totalPrice -= $this->items[$id]['item']['price'];
+    }
+
     public function remove($id){
         $this->totalQuantity -= $this->items[$id]['quantity'];
         $this->totalPrice -= $this->items[$id]['price'];

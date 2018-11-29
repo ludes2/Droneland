@@ -34,12 +34,12 @@
   align-items: stretch;
 }
 
-#sidebar {
+/*#sidebar {
   min-width: 300px;
   max-width: 300px;
   min-height: 100vh;
 
-}
+}*/
 
 #sidebar ul li a {
   display: block;

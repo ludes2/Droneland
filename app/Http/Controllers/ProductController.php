@@ -42,7 +42,7 @@ class ProductController extends Controller
                 $cart = new Cart($oldCart);
                 $diff = intval($item['quantity']) - intval($request->input('quantity_of_' . $item['item']['id']));
                 for($i = 1; $i <= $diff; $i++){
-                    $cart->remove($item['item']['id']);
+                    $cart->reduceByOne($item['item']['id']);
                 }
             } else{
                 $cart = new Cart($oldCart);

@@ -15,87 +15,123 @@
     </div>
 </div>
 
+
+
 <!-- SIDE NAVIGATION -->
 <div class="row">
-    <div class="collapse show" id="sidebar">
-        <ul class="sieNavigation list-unstyled">
-            @each('partials.sideNavigation', $categories, 'category')
-        </ul>
+    <div class="col-3">
+        <div class="collapse show" id="sidebar">
+            <ul class="sieNavigation list-unstyled">
+                @each('partials.sideNavigation', $categories, 'category')
+            </ul>
+        </div>
     </div>
 
-    <!-- BESTSELLER CARD-CAROUSEL -->
-    <div class="col mx-auto px-5" id="bestseller">
-        <div class="card bg-transparent">
-            <div class="card-header">
-                <h4 class="card-title">
-                    <a href="#">Bestseller</a>
-                </h4>
-            </div><!-- CARD-HEADER-->
-            <div class="card-body">
+    <!-- CONTENT -->
+    <div class="col-9 mx-auto px-5">
+        <!-- BESTSELLER CARD-CAROUSEL -->
+        <div class="row my-2" id="bestseller">
+            <div class="col">
+                <div class="card bg-transparent">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            <a href="#">Bestseller</a>
+                        </h4>
+                    </div><!-- CARD-HEADER-->
+                    <div class="card-body">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner row w-100 mx-auto">
 
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner row w-100 mx-auto">
+                                <div class="carousel-item col-md-4 active">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 1</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item col-md-4 ">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 2</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item col-md-4 ">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/3ed846/fff" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 3</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item col-md-4 ">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/42ebf4/fff" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 4</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item col-md-4 ">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f49b41/fff" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 5</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="carousel-item col-md-4 active">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card 1</h4>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
                             </div>
+                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a> <!-- CAROUSEL-CONTROL-PREV -->
+                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a> <!-- CAROUSEL-CONTROL-NEXT -->
                         </div>
-                        <div class="carousel-item col-md-4 ">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card 2</h4>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
+
+                    </div> <!-- CARD-BODY-->
+                </div> <!-- CARD -->
+            </div> <!-- COL -->
+        </div> <!-- ROW BESTSELLER -->
+
+        <!-- EINKAUFSGUIDE -->
+        <div class="row my-2" id="guide">
+            <div class="col">
+                <div class="card bg-transparent">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            <a href="#">Einkaufsguide</a>
+                        </h4>
+                    </div><!-- CARD-HEADER-->
+                    <div class="card-body">
+                        <h5>Einstieg in das FPV Racing / Drone Racing - grundsätzliche Möglichkeiten</h5>
+                        <p>Für den Einsteiger stellt sich die Frage, ob man seinen Racing Quadcopter selbst zusammenbauen und tunen möchte, oder ob man auf einen bereits gebautes und eingestelltes Modell zurückgreifen möchten.</p>
+                        <p>Beide Möglichkeiten haben Ihre Vor- und Nachteile:</p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h6>Variante Eigenbau</h6>
                             </div>
-                        </div>
-                        <div class="carousel-item col-md-4 ">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/3ed846/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card 3</h4>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-md-4 ">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/42ebf4/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card 4</h4>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item col-md-4 ">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f49b41/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card 5</h4>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
+                            <div class="col">
+                                <h6>Variante flugfertige FPV Racer</h6>
                             </div>
                         </div>
 
-                    </div>
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a> <!-- CAROUSEL-CONTROL-PREV -->
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a> <!-- CAROUSEL-CONTROL-NEXT -->
-                </div>
-
-            </div> <!-- CARD-BODY-->
-        </div> <!-- CARD -->
-    </div>
+                    </div> <!-- CARD-BODY-->
+                </div> <!-- CARD -->
+            </div> <!-- COL -->
+        </div> <!-- ROW GUIDE -->
+    </div> <!-- COL-9 -->
 
 
 </div> <!-- end of row -->

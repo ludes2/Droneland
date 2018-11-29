@@ -34,18 +34,13 @@
                         </div>
                         <div class="col-4 col-sm-4 col-md-4 pt-2">
                             <div class="quantity">
-                                <!--<input type="button" value="+" class="plus">-->
-
-                                <input type="number" step="1" max="99" min="1" value="{{ $product['quantity'] }}" name="quantity_of_{{ $product['item']['id'] }}" class="qty"
-                                       size="4">
-
-                                <!--<input type="button" value="-" class="minus">-->
+                                <input type="number" step="1" max="99" min="1" value="{{ $product['quantity'] }}" name="quantity_of_{{ $product['item']['id'] }}" class="qty" size="4">
                             </div>
                         </div>
                         <div class="col-2 col-sm-2 col-md-2 text-right pt-2">
-                            <form method="GET" id="product-{{ $product['item']['id'] }}" action="{{ route('removeFromCart', $product['item']['id']) }}">@csrf
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                            </form>
+                            {{--<form method="GET" id="product-{{ $product['item']['id'] }}" action="{{ route('removeFromCart', $product['item']['id']) }}">@csrf--}}
+                            <a href="{{ route('removeFromCart', $product['item']['id']) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            {{--</form>--}}
                         </div>
                     </div>
                 </div> <!-- end of row -->
@@ -53,8 +48,8 @@
                 <hr>
                 <!-- END OF PRODUCTS -->
 
-                <div class="pull-right">
-                    <button onclick="document.getElementById('cart_quantity').submit();" class="btn btn-outline-secondary pull-right">
+                <div class="text-right">
+                    <button onclick="document.getElementById('cart_quantity').submit();" class="btn btn-outline-secondary">
                         Update shopping cart
                     </button>
                 </div> <!-- end of pull-right button "update shopping cart" -->
@@ -67,13 +62,15 @@
 
                 </div> <!-- end of card-body -->
 
-            <div class="card-footer">
-                    <div class="pull-right px-3">
-                        <a href="{{ route('checkout') }}" class="btn btn-primary pull-right">Checkout</a>
-                        <div class="pull-right px-2">
-                            Total price: <b>{{ number_format($totalPrice, 0, ',', "'") }}</b>
-                        </div>
+            <div class="card-footer text-right">
+                <div class="row">
+                    <div class="col-10">
+                        Total price: <b>{{ number_format($totalPrice, 0, ',', "'") }}</b>
                     </div>
+                    <div class="col">
+                        <a href="{{ route('checkout') }}" class="btn btn-primary">Checkout</a>
+                    </div>
+                </div>
                 </div> <!-- end of card-footer -->
         </form> <!-- end of form cart_quantity -->
     </div> <!-- end of shopping cart -->
