@@ -27,7 +27,7 @@
 
 @include('includes.navigation')
 
-<div class="container-fluid py-3" id="mainContainer">
+<div class="container-fluid py-5" id="mainContainer">
     @yield('content')
 </div>
 

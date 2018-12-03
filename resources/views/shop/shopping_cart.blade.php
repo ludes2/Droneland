@@ -54,11 +54,7 @@
                     </button>
                 </div> <!-- end of pull-right button "update shopping cart" -->
 
-                @else
-                    <div class="row">
-                        Your shopping cart is empty
-                    </div>
-                @endif
+
 
                 </div> <!-- end of card-body -->
 
@@ -71,7 +67,14 @@
                         <a href="{{ route('checkout') }}" class="btn btn-primary">Checkout</a>
                     </div>
                 </div>
-                </div> <!-- end of card-footer -->
+            </div> <!-- end of card-footer -->
+
+            @else
+                <div class="row">
+                    Your shopping cart is empty
+                </div>
+            @endif
+
         </form> <!-- end of form cart_quantity -->
     </div> <!-- end of shopping cart -->
 </div> <!-- end of content -->

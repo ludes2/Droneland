@@ -3,39 +3,102 @@
 @section('title') The Shop - Home @endsection
 
 @section('content')
-    {{--<div class="row text-right pt-5">
-        <div class="sidebar-header col-sm-3 pl-5 text-left">
-            <h3>@lang('messages.products') <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon"></i></a></h3>
+
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <h2>Ich bin Anfänger - helft mir bitte!</h2>
         </div>
-        <div class="col-sm-9 pr-5">
-            <a id="shoppingCardLabel" href="{{ route('shoppingCart') }}">
-                <i class="pt-4 fa fa-shopping-cart"></i>  @lang('messages.shopping_cart')
-                <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</span>
-            </a>
+    </div>
+
+
+    <!-- GUIDE -->
+    <div class="row" id="guide">
+        <div class="col">
+            <p>Es gibt grundsätzlich zwei Möglichkeiten sich eine Drohne zu beschaffen. Entweder man kauft ein fertiges Bundle, mit allen nötigen Komponenten ausgestattet um gleich loszulegen
+            (sogenannt RTF - Ready to fly), oder man kauft die einzelnen Teile selber ein und setzt das Modell anschliessend zusammen. Die Vor- und Nachteile der jeweiligen Möglichkeit sind <a href="{{ route('index') }}">hier</a> zu finden.</p>
         </div>
-    </div>--}}
-
-
-
-    <!-- SIDE NAVIGATION -->
-    <div class="row pt-5">
-    {{--<div class="col-3">
-        <div class="collapse show" id="sidebar">
-            <ul class="sieNavigation list-unstyled">
-                @each('partials.sideNavigation', $categories, 'category')
-            </ul>
-        </div>
-    </div>--}}
-
-    <!-- CONTENT -->
-        <div class="col-9 mx-auto px-5">
-            <div class="row my-2" id="faq">
-                Guide here
-            </div>
-        </div> <!-- COL-9 -->
-
-
     </div> <!-- end of row -->
+
+    <div class="row">
+        <div class="col-4">
+            <div class="card" id="card_guide_doItYourself">
+                <div class="card-header">
+                    <h5>Variante Racing Drohne Eigenbau - Do it yourself</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Beim Zusammenstellen des persönlichen Racer Setups existieren zahlreiche Kombinationsmöglichkeiten.
+                        Grundsätzlich setzt sich ein Quadcopter aus folgenden Teilen zusammen:</p>
+                    <h6 class="card-title">Flugkomponenten</h6>
+                    <ul class="list-group-flush" id="ul_flyComponents">
+                        <li class="list-group-item">Frame</li>
+                        <li class="list-group-item">Flight Controller</li>
+                        <li class="list-group-item">Motoren (4x)</li>
+                        <li class="list-group-item">ESC's (4x)</li>
+                        <li class="list-group-item">Propeller</li>
+                        <li class="list-group-item">LiPo-Batterien</li>
+                        <li class="list-group-item">Receiver für Fernbedienung</li>
+                    </ul>
+                    <h6 class="card-title">FPV Komponenten</h6>
+                    <ul class="list-group-flush" id="ul_fpvComponents">
+                        <li class="list-group-item">FPV Kamera</li>
+                        <li class="list-group-item">Videotransmitter</li>
+                        <li class="list-group-item">FPV Antenne</li>
+                    </ul>
+                    <h6 class="card-title">Optionales Zubehör</h6>
+                    <ul class="list-group-flush" id="ul_optAssesoires">
+                        <li class="list-group-item">OSD (On-Screen-Display), in vielen Flight Controllern jedoch bereits integriert.</li>
+                    </ul>
+                </div>
+            </div>
+        </div> <!-- END OF COL - Variante Eigenbau -->
+
+        <div class="col-8">
+            <div class="card" id="card_guide_doItYourself">
+                <div class="card-header">
+                    <h5>Variante RTF - Flugfertige Copter</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">Mit steigender Bekanntheit der Sportart FPV Racing steigt auch die Anzahl erhältlicher Modelle von unterschiedlichen Herstellern in diversen Qualitäts- und Preisklassen. Wir stellen Ihnen einige der beliebtesten Modelle vor, welche von namhaften, angesehenen Herstellern im Racing Bereich stammen und über hochwertige Komponenten verfügen.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Drohne 1</h6>
+                                </div>
+                                <div class="card-body">
+                                    asdfasdf
+                                </div>
+                                <div class="card-footer">
+                                    adfasdf
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6>Drohne 2</h6>
+                                </div>
+                                <div class="card-body">
+                                    asdfasdf
+                                </div>
+                                <div class="card-footer">
+                                    adfasdf
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div> <!-- END OF COL - Variante RTF -->
+    </div> <!-- END OF ROW -->
+
 
 @endsection
 

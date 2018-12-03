@@ -3,7 +3,7 @@
 @section('title') The Shop - Home @endsection
 
 @section('content')
-<div class="row text-right pt-5">
+<div class="row text-right">
     <div class="sidebar-header col-sm-3 pl-5 text-left">
         <h3>@lang('messages.products') <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon"></i></a></h3>
     </div>
@@ -114,10 +114,10 @@
                         </h4>
                     </div><!-- CARD-HEADER-->
                     <div class="card-body">
-                        <p>In diesem Guide präsentieren wir Ihnen ein Einsteigersetup und informieren Sie über die Vor- und Nachteile und generelle Möglichkeiten für den Einstieg - vom fertig gebauten (BNF/PNP) Quadcopter bis zum selbst zusammengestellten und optimierten High End Setup.
-                            Für mehr Informationen klicken Sie <a href="{{ route('getGuide') }}">hier</a> oder besuchen Sie unsere <a href="{{ route('getFaq') }}">FAQ-Seite</a></p>
+                        <p>In diesem Abschnitt informieren wir Sie über die Vor- und Nachteile und generelle Möglichkeiten für den Einstieg - vom fertig gebauten (BNF/PNP) Quadcopter bis zum selbst zusammengestellten und optimierten High End Setup.
+                            Für noch mehr Informationen klicken Sie <a href="{{ route('getGuide') }}">hier</a> oder besuchen Sie unsere <a href="{{ route('getFaq') }}">FAQ-Seite</a></p>
                         <h5>Einstieg in das FPV Racing / Drone Racing - grundsätzliche Möglichkeiten</h5>
-                        <p>Für den Einsteiger stellt sich die Frage, ob man seinen Racing Quadcopter selbst zusammenbauen und tunen möchte, oder ob man auf einen bereits gebautes und eingestelltes Modell zurückgreifen möchten.</p>
+                        <p>Für den Einsteiger stellt sich die Frage, ob man seinen Quadcopter selbst zusammenbauen und tunen möchte, oder ob man auf einen bereits gebautes und eingestelltes Modell zurückgreifen möchten.</p>
                         <p>Beide Möglichkeiten haben Ihre Vor- und Nachteile:</p>
 
                         <div class="row">
