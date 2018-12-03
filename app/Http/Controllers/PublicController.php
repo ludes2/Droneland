@@ -25,6 +25,14 @@ class PublicController extends Controller
         return view('welcome');
     }
 
+    public function getFaq(){
+        return view('shop.FAQ');
+    }
+
+    public function getGuide(){
+        return view('shop.guide');
+    }
+
     public function about(){
         return view('about');
     }

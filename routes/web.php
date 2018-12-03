@@ -31,11 +31,14 @@ Route::get('/', 'PublicController@index')->name('index');
 Route::get('about', 'PublicController@about')->name('about');
 Route::get('contact', 'PublicController@contact')->name('contact');
 Route::post('contact', 'PublicController@contactPost')->name('contactPost');
+Route::get('/FAQ', 'PublicController@getFaq')->name('getFaq');
+Route::get('/guide', 'PublicController@getGuide')->name('getGuide');
 
 Route::get('/add_to_cart/{id}', 'ProductController@addToCart')->name('addToCart');
 Route::get('/remove_from_cart/{id}', 'ProductController@removeFromCart')->name('removeFromCart');
 Route::get('/shopping_cart', 'ProductController@getCart')->name('shoppingCart');
 Route::get('/shopping_cart_actual', 'ProductController@refreshCart')->name('refreshCart');
+
 
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');

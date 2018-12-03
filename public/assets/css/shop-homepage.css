@@ -128,6 +128,16 @@
   /*content:"\f0d7";*/
 }
 
+[data-toggle="collapse"] i:before{
+  content:"\f056"; /* - */
+  color: rgba(15, 15, 15, 0.61);
+}
+
+[data-toggle="collapse"].collapsed i:before{
+  content:"\f055"; /* + */
+  color: rgba(15, 15, 15, 0.6);
+}
+
 
 body {
   padding-top: 54px;

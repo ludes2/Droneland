@@ -110,10 +110,12 @@
                 <div class="card bg-transparent">
                     <div class="card-header">
                         <h4 class="card-title">
-                            <a href="#">Einkaufsguide</a>
+                            <a href="{{ route('getGuide') }}">Einkaufsguide</a>
                         </h4>
                     </div><!-- CARD-HEADER-->
                     <div class="card-body">
+                        <p>In diesem Guide präsentieren wir Ihnen ein Einsteigersetup und informieren Sie über die Vor- und Nachteile und generelle Möglichkeiten für den Einstieg - vom fertig gebauten (BNF/PNP) Quadcopter bis zum selbst zusammengestellten und optimierten High End Setup.
+                            Für mehr Informationen klicken Sie <a href="{{ route('getGuide') }}">hier</a> oder besuchen Sie unsere <a href="{{ route('getFaq') }}">FAQ-Seite</a></p>
                         <h5>Einstieg in das FPV Racing / Drone Racing - grundsätzliche Möglichkeiten</h5>
                         <p>Für den Einsteiger stellt sich die Frage, ob man seinen Racing Quadcopter selbst zusammenbauen und tunen möchte, oder ob man auf einen bereits gebautes und eingestelltes Modell zurückgreifen möchten.</p>
                         <p>Beide Möglichkeiten haben Ihre Vor- und Nachteile:</p>
@@ -121,9 +123,55 @@
                         <div class="row">
                             <div class="col">
                                 <h6>Variante Eigenbau</h6>
+                                <ul class="list-group-flush">
+                                    <li class="list-group-item"><b>Vorteile</b>
+                                        <ul>
+                                            <li class="list-group-item">Die gewünschten Komponenten können beliebig kombiniert werden</li>
+                                            <li class="list-group-item">Das Setup kann später leichter aufgerüstet oder geändert werden (Stichwort: Hypetrain)</li>
+                                            <li class="list-group-item">Bei der korrekten Wahl der Einzelteile sind Eigenbau Quadcopter leichter</li>
+                                            <li class="list-group-item">Reparaturen nach Crashs fallen leichter, da man den Copter selbst zusammengebaut hat</li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item"><b>Nachteile</b>
+                                        <ul>
+                                            <li class="list-group-item">Das nötige Fachwissen muss angeeignet werden, der Einstieg fällt somit etwas schwerer</li>
+                                            <li class="list-group-item">Je nachdem wird etwas Geduld benötigt</li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item"><b>Generell</b>
+                                        <ul>
+                                            <li class="list-group-item">Für Technikinteressierte gehört das Bauen zum Hobby dazu, etwas Lötkenntnisse sind dabei natürlich von Vorteil. Hat man seinen Quadcopter dann endlich in der Luft ist das Gefühl umso schöner, zudem fallen allfällige Reparaturen nach einem harten Crash leichter, da man seinen Copter bereits kennt.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="col">
                                 <h6>Variante flugfertige FPV Racer</h6>
+                                <ul class="list-group-flush">
+                                    <li class="list-group-item"><b>Vorteile</b>
+                                        <ul>
+                                            <li class="list-group-item">Man kann sofort mit dem Fliegen beginnen, ohne sich mit dem Zusammenbau zu beschäftigen</li>
+                                            <li class="list-group-item">Das Setup ist aufeinander abgestimmt, der Quadcopter ist bereits getuned</li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item"><b>Nachteile</b>
+                                        <ul>
+                                            <li class="list-group-item">Die flugfertigen Quadcopter sind meistens etwas schwerer als selbst zusammengebaute, was in Wettkämpfen ein Nachteil ist</li>
+                                            <li class="list-group-item">Die Möglichkeiten zur späteren Optimierung oder Änderung des Setups sind beschränkt</li>
+                                            <li class="list-group-item">Sollte nach einem harten Crash etwas kaputt gehen muss man unter Umständen trotzdem löten</li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item"><b>Generell</b>
+                                        <ul>
+                                            <li class="list-group-item">Auch wenn flugfertige Racing Copter im Vergleich zum Eigenbau etwas schwerer sind, ist die Leistung dennoch nicht zu unterschätzen. An offiziellen Wettkämpfen hat man im Vergleich zu den selbstgebauten High End Leichtbau-Setups zwar einen Nachteil, für Fun Races oder Flüge zum Spass sind die Fertigbau-Varianten trotzdem geeignet und der Spass ist garantiert.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6><a href="{{ route('getFaq') }}"> Sie haben Fragen welche wir in diesem Guide nicht beantworten konnten? Besuchen Sie doch unsere FAQ-Seite.</a></h6>
                             </div>
                         </div>
 
