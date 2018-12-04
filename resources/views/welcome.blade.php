@@ -19,7 +19,7 @@
 
 <!-- SIDE NAVIGATION -->
 <div class="row">
-    <div class="col-3">
+    <div class="col-2">
         <div class="collapse show" id="sidebar">
             <ul class="sieNavigation list-unstyled">
                 @each('partials.sideNavigation', $categories, 'category')
@@ -28,7 +28,7 @@
     </div>
 
     <!-- CONTENT -->
-    <div class="col-9 mx-auto px-5">
+    <div class="col-10 mx-auto px-5">
         <!-- BESTSELLER CARD-CAROUSEL -->
         <div class="row my-2" id="bestseller">
             <div class="col">

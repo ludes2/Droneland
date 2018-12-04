@@ -17,16 +17,13 @@
     </div> <!-- SHOPPING CART ROW -->
 
     <div class="row">
-
-        <div class="collapse show" id="sidebar">
-            <!--<nav class="collapse show" id="sidebar">-->
-            <ul class="sieNagivation list-unstyled">
-
-                @each('partials.sideNavigation', $categories, 'category')
-
-            </ul>
-            <!-- </nav> -->
-        </div> <!-- SIDEBAR -->
+        <div class="col-2">
+            <div class="collapse show" id="sidebar">
+                <ul class="sieNavigation list-unstyled">
+                    @each('partials.sideNavigation', $categories, 'category')
+                </ul>
+            </div>
+        </div>
 
         <div class="col mx-auto px-5" id="products">
 
