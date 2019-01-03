@@ -126,19 +126,19 @@ return [
 
     'custom' => [
         'title' => [
-            'required' => ':attribute of your new Product must not be empty.',
+            'required' => 'Der :attribute von Ihrem neuen Produkt darf nicht leer sein',
         ],
         'thumbnail' => [
-            'required' => ':attribute is needed.',
+            'required' => 'Ein :attribute wird benötigt.',
         ],
         'price' => [
-            'required' => 'Please specify a :attribute for your new Product.',
+            'required' => 'Bitte spezifizieren Sie einen :attribute für Ihr neues Produkt.',
         ],
         'short-description' => [
-            'required' => 'A :attribute of your new Product is required.',
+            'required' => 'Eine :attribute von Ihrem neuen Produkt wird benötigt.',
         ],
         'newInputCategory' => [
-            'required' => 'Please choose a :attribute from the Dropdown-list.',
+            'required' => 'Bitte wählen Sie eine :attribute von der Dropdown-Liste aus.',
         ],
     ],
 
@@ -154,11 +154,11 @@ return [
     */
 
     'attributes' => [
-        'title'     => 'The Title',
-        'thumbnail' => 'An image',
-        'price'     => 'Price',
-        'newInputCategory'      => 'Category',
-        'short-description'     => 'Short Description'
+        'title'     => 'Titel',
+        'thumbnail' => 'Bild',
+        'price'     => 'Preis',
+        'newInputCategory'      => 'Kategorie',
+        'short-description'     => 'kurze Beschreibung'
     ],
 
 ];

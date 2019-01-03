@@ -2,7 +2,14 @@
 <div class="content pt-4">
     <div class="card">
         <div class="card-header bg-light">
-            Products
+            <div class="row">
+                <div class="col">
+                    <h6 class="card-title">@lang('messages.products')</h6>
+                </div>
+                <div class="col text-right">
+                    <a href="{{ route('newProduct') }}" role="button" class="btn btn-primary">+ @lang('messages.new_product')</a>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">
@@ -19,15 +26,16 @@
                     </ul>
                 </div>
             @endif
+
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>Thumbnail</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Category</th>
+                        <th>@lang('messages.title')</th>
+                        <th>@lang('messages.price')</th>
+                        <th>@lang('messages.category')</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -52,18 +60,18 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h6 class="modal-title" id="exampleModalLabel">Your are about to delete {{ $product->title }}</h6>
+                                        <h6 class="modal-title" id="exampleModalLabel">@lang('messages.you_are_about_to_delete') {{ $product->title }}</h6>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are your sure?
+                                        @lang('messages.are_your_sure')
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, keep it.</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.keep_it').</button>
                                         <form method="POST" id="deleteProduct-{{ $product->id }}" action="{{ route('deleteProduct', $product->id) }}">@csrf
-                                            <button type="submit" class="btn btn-primary">Yes, delete it.</button>
+                                            <button type="submit" class="btn btn-primary">@lang('messages.delete_it')</button>
                                         </form>
                                     </div>
                                 </div>

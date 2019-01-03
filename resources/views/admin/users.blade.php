@@ -2,7 +2,7 @@
 <div class="content pt-4">
     <div class="card">
         <div class="card-header bg-light">
-            Users
+            <h6 class="card-title">@lang('messages.users')</h6>
         </div>
 
         <div class="card-body">
@@ -25,7 +25,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>@lang('messages.email_address')</th>
                         <th>Admin</th>
                         <th>Created at</th>
                         <th>Updated at</th>
@@ -54,18 +54,18 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h6 class="modal-title" id="exampleModalLabel">Your are about to delete {{ $user->name }}</h6>
+                                        <h6 class="modal-title" id="exampleModalLabel">@lang('messages.you_are_about_to_delete') {{ $user->name }}</h6>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are your sure?
+                                        @lang('messages.are_your_sure')
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, keep it.</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.keep_it')</button>
                                         <form method="POST" id="deleteUser-{{ $user->id }}" action="{{ route('deleteUser', $user->id) }}">@csrf
-                                            <button type="submit" class="btn btn-primary">Yes, delete it.</button>
+                                            <button type="submit" class="btn btn-primary">@lang('messages.delete_it')</button>
                                         </form>
                                     </div>
                                 </div>

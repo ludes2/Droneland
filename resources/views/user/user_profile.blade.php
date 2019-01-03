@@ -2,7 +2,7 @@
     <div class="col-md-10">
         <div class="card">
             <div class="card-header bg-light">
-                Account Settings
+                <h6>@lang('messages.account_settings')</h6>
             </div>
 
             @if(session('error'))
@@ -17,23 +17,13 @@
                 </div>
             @endif
 
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form action="#" method="POST">
+            <form action="{{ route('userProfilePost') }}" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="row mb-5">
                         <div class="col-md-4 mb-4">
-                            <div>Profile Information</div>
-                            <div class="text-muted small">These information are visible to the public.</div>
+                            <div>@lang('messages.profile_infos')</div>
+                            <div class="text-muted small"> @lang('messages.profile_infos_hint')</div>
                         </div>
 
                         <div class="col-md-8">
@@ -49,7 +39,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-control-label">Email Address</label>
+                                        <label class="form-control-label"> @lang('messages.email_address')</label>
                                         <input name="email" class="form-control" value="{{ $user->email }}">
                                     </div>
                                 </div>
@@ -61,28 +51,28 @@
 
                     <div class="row mt-5">
                         <div class="col-md-4 mb-4">
-                            <div>Access Credentials</div>
-                            <div class="text-muted small">Leave credentials fields empty if you don't wish to change the password.</div>
+                            <div> @lang('messages.access_credentials')</div>
+                            <div class="text-muted small"> @lang('messages.profile_pw_hint')</div>
                         </div>
 
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">Current Password</label>
+                                        <label class="form-control-label"> @lang('messages.current_pw')</label>
                                         <input name="password" type="password" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">New Password</label>
+                                        <label class="form-control-label"> @lang('messages.new_pw')</label>
                                         <input name="new_password" type="password" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="form-control-label">New Password Confirmation</label>
+                                        <label class="form-control-label"> @lang('messages.confirm_pw')</label>
                                         <input name="new_password_confirmation" type="password" class="form-control">
                                     </div>
                                 </div>
@@ -92,7 +82,7 @@
                 </div>
 
                 <div class="card-footer bg-light text-right">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-primary"> @lang('messages.save_changes')</button>
                 </div>
             </form>
         </div>

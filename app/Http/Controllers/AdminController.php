@@ -107,4 +107,35 @@ class AdminController extends Controller
         $user->delete();
         return back();
     }
+
+    public function newProduct(){
+        $categories = Category::all();
+        return view('admin.new_product', [
+            'categories'    => $categories
+        ]);
+    }
+
+    public function newProductPost(Request $request){
+        $this->validate($request, [
+            'title'         => 'required|unique:products,title|string',
+            'thumbnail'     => 'required|file',
+            'price'         => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+            'newInputCategory' => 'required',
+            'short-description' => 'required|string',
+        ]);
+
+        $product = new Product();
+        $product->title = $request['title'];
+        $product->short_description = $request['short-description'];
+        $product->price = $request['price'];
+        $product->category = $request['newInputCategory'];
+
+        $thumbnail = $request->file('thumbnail');
+        $fileName = $thumbnail->getClientOriginalName();
+        $thumbnail->move('imgs/products/', $fileName);
+        $product->thumbnail = 'imgs/products/' . $fileName;
+
+        $product->save();
+        return back();
+    }
 }

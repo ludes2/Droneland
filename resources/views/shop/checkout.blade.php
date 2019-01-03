@@ -5,12 +5,12 @@
 @section('content')
 
     <div class="content py-5">
-        <form class="needs_validation" action="{{ route('checkout') }}" method="POST" id="checkoutForm" novalidate>
+        <form class="needs_validation" action="{{ route('saveOrder') }}" method="POST" id="checkoutForm" novalidate>
             @csrf
             <div class="card shopping-cart">
                 <div class="card-header bg-dark text-light" id="checkoutHeader">
                     Checkout
-                    <a href="{{ route('index') }}" class="btn btn-outline-info btn-sm pull-right">go back to shopping cart</a>
+                    <a href="{{ route('shoppingCart') }}" class="btn btn-outline-info btn-sm pull-right">@lang('messages.back_to_shopping_cart')</a>
                     <div class="clearfix"></div>
                 </div>
                     <div class="card-body">
@@ -20,9 +20,9 @@
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="text" id="name" class="form-control" required>
+                                            <input type="text" id="name" name="name" class="form-control" required>
                                             <div class="invalid-feedback">
-                                                Please enter your Name
+                                                @lang('messages.enter_name')
                                             </div>
                                         </div>
                                     </div>
@@ -30,10 +30,10 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <label for="address">Address</label>
-                                            <input type="text" id="address" class="form-control" required>
+                                            <label for="address">@lang('messages.address')</label>
+                                            <input type="text" id="address" name="address" class="form-control" required>
                                             <div class="invalid-feedback">
-                                                Please enter your Address
+                                                @lang('messages.enter_address')
                                             </div>
                                         </div>
                                     </div>
@@ -41,10 +41,10 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <label for="card_holder_name">Card Holder Name</label>
-                                            <input type="text" id="card_holder_name" class="form-control" required>
+                                            <label for="card_holder_name">@lang('messages.card_holder_name')</label>
+                                            <input type="text" id="card_holder_name" name="card_holder_name" class="form-control" required>
                                             <div class="invalid-feedback">
-                                                Please enter the Card Holder Name
+                                                @lang('messages.enter_card_holder_name')
                                             </div>
                                         </div>
                                     </div>
@@ -52,11 +52,11 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <label for="card_number">Card number</label>
+                                            <label for="card_number">@lang('messages.card_number')</label>
                                             <div class="input-group">
-                                                <input type="text" id="card_number" class="form-control" required>
+                                                <input type="text" id="card_number" name="card_number" class="form-control" required>
                                                 <div class="invalid-feedback">
-                                                    Please enter the Card Name
+                                                    @lang('messages.enter_card_name')
                                                 </div>
                                             </div>
                                         </div>
@@ -67,20 +67,20 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-4 col-sm-4 col-md-4">
-                                                    <label for="card_expiration_date">Expiration Month</label>
+                                                    <label for="card_expiration_date">@lang('messages.exp_month')</label>
                                                     <div class="input-group">
                                                         <input type="text" id="exp_month" class="form-control" required>
                                                         <div class="invalid-feedback">
-                                                            Please enter the expiration Month of the Credit Card
+                                                            @lang('messages.enter_exp_month')
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4 col-sm-4 col-md-4">
-                                                    <label for="card_expiration_date">Expiration Year</label>
+                                                    <label for="card_expiration_date">@lang('messages.exp_year')</label>
                                                     <div class="input-group">
                                                         <input type="text" id="exp_year" class="form-control" required>
                                                         <div class="invalid-feedback">
-                                                            Please enter the expiration Year of the Credit Card
+                                                            @lang('messages.enter_exp_year')
                                                         </div>
                                                     </div>
                                                 </div>
@@ -89,7 +89,7 @@
                                                     <div class="input-group">
                                                         <input type="text" id="card_cvc" class="form-control" required>
                                                         <div class="invalid-feedback">
-                                                            Please enter the CV Code of the Credit Card
+                                                            @lang('messages.enter_cvc')
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,13 +99,13 @@
                                 </div> <!-- Expiration fields and CVC -->
                             </div>
                             <div class="col-6 col-sm-6 col-md-6">
-                                <h4>Your Purchase: </h4>
+                                <h4>@lang('messages.purchase')</h4>
                                 <table class="table table-sm text-center">
                                     <thead>
                                     <tr>
-                                        <th class="text-left" scope="col">Product</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
+                                        <th class="text-left" scope="col">@lang('messages.product')</th>
+                                        <th scope="col">@lang('messages.price')</th>
+                                        <th scope="col">@lang('messages.quantity')</th>
                                         <th scope="col">Total</th>
                                     </tr>
                                     </thead>
@@ -120,7 +120,7 @@
                                     @endforeach
                                     </tbody>
                                     <tr>
-                                        <td class="text-right" colspan="4"><b>Amount to pay: {{ number_format($total, 0, ',', "'") }}.-</b></td>
+                                        <td class="text-right" colspan="4"><b>@lang('messages.amount_to_pay') {{ number_format($total, 0, ',', "'") }}.-</b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -128,7 +128,7 @@
                     </div>
                 <div class="card-footer">
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-primary pull-right">Buy now</button>
+                        <button type="submit" class="btn btn-primary pull-right">@lang('messages.buy_now')</button>
                     </div>
                 </div>
             </div>

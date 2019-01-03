@@ -9,8 +9,8 @@
     <meta name="author" content="">
 
     <title>@yield('title')</title>
-
-
+    <!-- include Chart.js library -->
+    <script src="{{ 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js' }}"></script>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 

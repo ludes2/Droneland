@@ -27,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * One-to-Many relationship. Each User can have multiple orders, whereas each order belongs to one User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(){
+        return $this->hasMany('App\Order');
+    }
 }

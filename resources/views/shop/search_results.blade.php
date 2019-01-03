@@ -15,7 +15,7 @@
                             </div>
                             <div class="card-footer">
                                 <a>{{ number_format($product_found->price, 0, ',', "'") }}.-</a>
-                                <a href="{{ route('addToCart', $product_found->id) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
+                                <a href="{{ route('addToCart', $product_found->id) }}" class="btn btn-primary pull-right" role="button">@lang('messages.add_to_cart')</a>
                             </div>
                         </div>
                     </div>

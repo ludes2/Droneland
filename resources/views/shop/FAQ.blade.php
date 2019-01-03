@@ -41,11 +41,15 @@
                             </tr>
                             <tr>
                                 <th scope="row">RTF</th>
-                                <td>"Ready-to-Fly"</td>
+                                <td>"stands for Ready-to-Fly and it means the model you are buying comes complete with everything you need to get started – straight from the box!</td>
                             </tr>
                             <tr>
-                                <th scope="row">RTF</th>
-                                <td>...</td>
+                                <th scope="row">BNF</th>
+                                <td>stands for Bind-N-Fly. Bind-N-Fly products come with everything you need except for a transmitter. With BNF products you can use the transmitter of your choice and bind it to the receiver included with the model.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">PNP</th>
+                                <td>stands for Plug-N-Play. Plug-N-Play products come with everything you need except for a transmitter, receiver battery and charger. It does contain servos, motor and ESC.</td>
                             </tr>
                             </tbody>
                         </table>

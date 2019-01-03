@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use App\Cart;
 use App\Category;
+use App\Order;
 
 class ProductController extends Controller
 {
@@ -48,7 +50,7 @@ class ProductController extends Controller
                 $cart = new Cart($oldCart);
             }
             $request->session()->put('cart', $cart);
-            return back();
+             return back();
         }
 
 
@@ -103,6 +105,22 @@ class ProductController extends Controller
         return view('shop.singleProduct', [
             'product' => $product
         ]);
+    }
+
+    public function saveOrder(Request $request){
+        if (!Session::has('cart')){
+            return view('shop.shopping_cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $order = new Order();
+        $order->cart = serialize($cart);
+        $order->address = $request->input('address');
+        $order->name = $request->input('name');
+
+        Auth::user()->orders()->save($order);
+        Session::forget('cart');
+        return redirect()->route('index')->with('successPurchase', 'successfully purchased products');
     }
 
 }

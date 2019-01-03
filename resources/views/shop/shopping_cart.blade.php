@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Shopping Cart @endsection
+@section('title') @lang('messages.shopping_cart') @endsection
 
 @section('content')
 
@@ -8,8 +8,8 @@
     <div class="card shopping-cart">
         <div class="card-header bg-dark text-light" id="shoppingCartHeader">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            Shopping cart
-            <a id="shoppingCardLabel" href="{{ route('index') }}" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
+            @lang('messages.shopping_cart')
+            <a id="shoppingCardLabel" href="{{ route('index') }}" class="btn btn-outline-info btn-sm pull-right">@lang('messages.cont_shopping')</a>
             <div class="clearfix"></div>
         </div> <!-- end of card-header -->
 
@@ -50,7 +50,7 @@
 
                 <div class="text-right">
                     <button onclick="document.getElementById('cart_quantity').submit();" class="btn btn-outline-secondary">
-                        Update shopping cart
+                        @lang('messages.update_cart')
                     </button>
                 </div> <!-- end of pull-right button "update shopping cart" -->
 
@@ -61,17 +61,17 @@
             <div class="card-footer text-right">
                 <div class="row">
                     <div class="col-10">
-                        Total price: <b>{{ number_format($totalPrice, 0, ',', "'") }}</b>
+                        @lang('messages.total_price')<b>{{ number_format($totalPrice, 0, ',', "'") }}</b>
                     </div>
                     <div class="col">
-                        <a href="{{ route('checkout') }}" class="btn btn-primary">Checkout</a>
+                        <a href="{{ route('checkout') }}" class="btn btn-primary">@lang('messages.checkout')</a>
                     </div>
                 </div>
             </div> <!-- end of card-footer -->
 
             @else
                 <div class="row">
-                    Your shopping cart is empty
+                    @lang('messages.empty_cart')
                 </div>
             @endif
 

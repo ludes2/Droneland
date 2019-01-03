@@ -64,30 +64,67 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row py-2">
                         <div class="col">
-                            <div class="card">
+                            <div class="card productCard">
                                 <div class="card-header">
-                                    <h6>Drohne 1</h6>
+                                    <h6>Hawk 5 von Emax</h6>
                                 </div>
                                 <div class="card-body">
-                                    asdfasdf
+                                    <a href="#"><img class="card-img-top" src="{{ asset('imgs/products/emax_hawk_5_pnp_quadcopter.jpg') }}" alt=""></a>
+                                    <p class="card-text">Dieser flugfertige Copter hat das Aussehen eines selbst gebauten Race Copters und überzeugt mit seiner hervorragenden Flugleistung. Ideal für Races.</p>
                                 </div>
                                 <div class="card-footer">
-                                    adfasdf
+                                    <a>{{ number_format(259, 0, ',', "'") }}.-</a>
+                                    <a href="{{ route('addToCart', 20) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card">
+                            <div class="card productCard">
                                 <div class="card-header">
-                                    <h6>Drohne 2</h6>
+                                    <h6>ImmersionRC Vortex 230 Mojo</h6>
                                 </div>
                                 <div class="card-body">
-                                    asdfasdf
+                                    <a href="#"><img class="card-img-top " src="{{ asset('imgs/products/immersionrc_vortex_230_mojo.jpg') }}" alt=""></a>
+                                    <p class="card-text">Der "Panzer" von ImmersionRC - stabiler Racer für Race und Freestyle, inkl. vollwertigem OSD (On Screen Display), Frühlingsaktion CHF 329.-- statt 399.--!</p>
                                 </div>
                                 <div class="card-footer">
-                                    adfasdf
+                                    <a>{{ number_format(329, 0, ',', "'") }}.-</a>
+                                    <a href="{{ route('addToCart', 12) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row py-2">
+                        <div class="col">
+                            <div class="card productCard">
+                                <div class="card-header">
+                                    <h6>HSANROCK mini Drohne für Anfänger</h6>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#"><img class="card-img-top " src="{{ asset('imgs/products/sanrock_mini_drohne_rtf.jpg') }}" alt=""></a>
+                                    <p class="card-text">SANROCK Mini Drohne für Kinder und Anfänger GD65A RC Drone Quadrocopter mit Höhe-halten, Kopflos-Modus, EIN-Tasten-Rückkehr, Spielzeug Drone für Kinder und Anfänger.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a>{{ number_format(259, 0, ',', "'") }}.-</a>
+                                    <a href="{{ route('addToCart', 20) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card productCard">
+                                <div class="card-header">
+                                    <h6>Eachine E010S Tiny Whoop BNF Copter </h6>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#"><img class="card-img-top " src="{{ asset('imgs/products/eachinge_tiny_whop_bnf.jpg') }}" alt=""></a>
+                                    <p class="card-text">The Eachine E010S is the best ready to go Tiny Whoop on the whole market. Featuring a F3 FC with built in FrSky receiver, 40CH 25mw VTX and a 800TVL camera. Everything built into one tiny 65mm wheelbase package. The prop guards make sure it's safe to fly indoors. </p>
+                                </div>
+                                <div class="card-footer">
+                                    <a>{{ number_format(329, 0, ',', "'") }}.-</a>
+                                    <a href="{{ route('addToCart', 12) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
                                 </div>
                             </div>
                         </div>

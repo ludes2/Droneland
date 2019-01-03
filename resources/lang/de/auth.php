@@ -20,5 +20,6 @@ return [
 
     'failed' => 'Die Eingaben sind nicht korrekt.',
     'throttle' => 'Sie haben die maximale Anzahl an Versuchen verbraucht. Bitte versuchen Sie es in :seconds Sekunden nochmals.',
+    'pw'        => 'Passwort'
 
 ];

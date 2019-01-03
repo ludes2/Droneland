@@ -15,6 +15,10 @@
     </div>
 </div>
 
+@if(Session::has('successPurchase'))
+    <div class="alert alert-success">{{ Session::get('successPurchase') }}</div>
+@endif
+
 
 
 <!-- SIDE NAVIGATION -->
@@ -35,7 +39,7 @@
                 <div class="card bg-transparent">
                     <div class="card-header">
                         <h4 class="card-title">
-                            <a href="#">Bestseller</a>
+                            <a href="#">@lang('messages.bestseller')</a>
                         </h4>
                     </div><!-- CARD-HEADER-->
                     <div class="card-body">
@@ -110,7 +114,7 @@
                 <div class="card bg-transparent">
                     <div class="card-header">
                         <h4 class="card-title">
-                            <a href="{{ route('getGuide') }}">Einkaufsguide</a>
+                            <a href="{{ route('getGuide') }}">@lang('messages.einkaufsguide')</a>
                         </h4>
                     </div><!-- CARD-HEADER-->
                     <div class="card-body">

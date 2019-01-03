@@ -12,7 +12,7 @@
 
 
         <button type="button" id="btn_adv_search" class="btn btn-primary order-2" data-toggle="modal" data-target="#exampleModalCenter">
-            Advanced Search
+            @lang('messages.advanced_search')
         </button>
 
         <!-- SEARCH FORM -->
@@ -61,17 +61,17 @@
                     @endif
                     <li class="nav-item">
                         <form method="POST" id="logout-form" action="{{ route('logout') }}">@csrf</form>
-                        <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                        <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">@lang('messages.logout')</a>
                     </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">
-                            <i class="fa fa-user"></i> Login</a>
+                            <i class="fa fa-user"></i> @lang('messages.login')</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">
-                            <i class="fa fa-user"></i> Register</a>
+                            <i class="fa fa-user"></i> @lang('messages.register')</a>
                     </li>
                 @endif
             </ul>
@@ -89,7 +89,7 @@
                     <div class="modal-header">
                         <div class="row">
                             <div class="col-6">
-                                <h6 class="modal-title" id="exampleModalLabel">Search Products by name</h6>
+                                <h6 class="modal-title" id="exampleModalLabel">@lang('messages.search_products_by_name')</h6>
                             </div>
                             <div class="col-6 w-100 pull-right">
                                 <form>
@@ -134,7 +134,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="inputBrand">Hersteller</label>
+                                        <label for="inputBrand">@lang('messages.brand')</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please select</button>
@@ -150,7 +150,7 @@
                                 </div> <!-- COL -->
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="inputCategory">Category</label>
+                                        <label for="inputCategory">@lang('messages.category')</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Please select</button>
@@ -168,7 +168,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="inputTitle">Product Title</label>
+                                        <label for="inputTitle">@lang('messages.title')</label>
                                         <div class="input-group">
                                             <input id="inputTitle" type="text" class="form-control" aria-label="Text input with dropdown button">
                                         </div>
@@ -179,7 +179,7 @@
                                 ?>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="maxPrice">max Price: <span id="price"></span></label>
+                                        <label for="maxPrice">max @lang('messages.price'): <span id="price"></span></label>
                                         <!-- <div class="input-group"> -->
                                         <div class="slideContainer">
                                             <input id="maxPrice" type="range" min="1" max="{{ max($prices) }}" value="1" class="slider">
@@ -191,8 +191,8 @@
 
                         </div> <!-- MODAL-BODY -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Search</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('messages.cancel')</button>
+                            <button type="button" class="btn btn-primary">@lang('messages.search')</button>
                         </div>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                             output += "</div>"; // CARD-BODY
                             output += "<div class='card-footer'>";
                             output += "<a>" + searchResult[i].price + "</a>";
-                            output += "<a id="+ searchResult[i].id +" href='/add_to_cart/"+ searchResult[i].id +"' class='btn btn-primary pull-right' role='button'>" + "Add to Cart" + "</a>";
+                            output += "<a id="+ searchResult[i].id +" href='/add_to_cart/"+ searchResult[i].id +"' class='btn btn-primary pull-right' role='button'>" + "@lang('messages.add_to_cart')" + "</a>";
                             output += "</div>"; // CARD-FOOTER
                             output += "</div>"; // CARD
                             output += "</div>"; // COL
@@ -304,7 +304,7 @@
                                 output += "</div>"; // CARD-BODY
                                 output += "<div class='card-footer'>";
                                 output += "<a>" + searchResult[i].price + "</a>";
-                                output += "<a id="+ searchResult[i].id +" href='/add_to_cart/"+ searchResult[i].id +"' class='btn btn-primary pull-right' role='button'>" + "Add to Cart" + "</a>";
+                                output += "<a id="+ searchResult[i].id +" href='/add_to_cart/"+ searchResult[i].id +"' class='btn btn-primary pull-right' role='button'>" + "@lang('messages.add_to_cart')" + "</a>";
                                 output += "</div>"; // CARD-FOOTER
                                 output += "</div>"; // CARD
                                 output += "</div>"; // COL

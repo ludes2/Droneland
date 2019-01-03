@@ -23,6 +23,7 @@ Route::get('locale/{locale}', function ($locale){
 });*/
 
 Route::get('myAccount', 'UserController@myAccount')->name('myAccount');
+Route::post('myAccount', 'UserController@profilePost')->name('userProfilePost');
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
@@ -39,9 +40,8 @@ Route::get('/remove_from_cart/{id}', 'ProductController@removeFromCart')->name('
 Route::get('/shopping_cart', 'ProductController@getCart')->name('shoppingCart');
 Route::get('/shopping_cart_actual', 'ProductController@refreshCart')->name('refreshCart');
 
-
-Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
-Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
+Route::get('/checkout', 'ProductController@getCheckout')->name('checkout')->middleware('auth');
+Route::post('/checkout', 'ProductController@saveOrder')->name('saveOrder')->middleware('auth');
 
 Route::get('/products/{category}', 'ProductController@getProducts')->name('getProducts');
 Route::get('/product/{product}', 'ProductController@getSingleProduct')->name('getSingleProduct');
@@ -56,3 +56,5 @@ Route::post('deleteUser/{id}', 'AdminController@deleteUser')->name('deleteUser')
 Route::get('editProduct', 'AdminController@editProduct')->name('editProduct');
 Route::post('editProduct', 'AdminController@editProductPost')->name('editProductPost');
 Route::post('deleteProduct/{id}', 'AdminController@deleteProduct')->name('deleteProduct');
+Route::get('newProduct', 'AdminController@newProduct')->name('newProduct');
+Route::post('newProduct', 'AdminController@newProductPost')->name('newProductPost');

@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
-@section('title') Products @endsection
+@section('title') @lang('messages.products') @endsection
 
 @section('content')
 
     <div class="row text-right pt-5">
         <div class="sidebar-header col-sm-3 pl-5 text-left">
-            <h3>Products <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon"></i></a></h3>
+            <h3>@lang('messages.products') <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon"></i></a></h3>
         </div>
         <div class="col-sm-9 pr-5">
             <a href="{{ route('shoppingCart') }}">
-                <i class=" pt-4 fa fa-shopping-cart"></i>  Shopping Cart
+                <i class=" pt-4 fa fa-shopping-cart"></i>  @lang('messages.shopping_cart')
                 <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</span>
             </a>
         </div>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <a>{{ number_format($product->price, 0, ',', "'") }}.-</a>
-                                    <a href="{{ route('addToCart', $product->id) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
+                                    <a href="{{ route('addToCart', $product->id) }}" class="btn btn-primary pull-right" role="button">@lang('messages.add_to_cart')</a>
                                 </div>
                             </div>
                         </div>
