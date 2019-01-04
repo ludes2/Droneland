@@ -48,42 +48,59 @@
             </div>
 
         </div>
+
+        <?php
+            $result = array("January" => 0, "February" => 0, "March" => 0, "April" => 0, "May" => 0, "June" => 0, "July" => 0, "August" => 0, "September" => 0, "October" => 0, "November" => 0, "December" => 0);
+            $purchases = 0;
+            foreach ($orders as $order){
+                echo 'totalPrice: ' . $purchases = $order->cart->totalPrice . ', ';
+                echo '<br>';
+
+                echo 'Date: ' . date_format($order->created_at, 'F');
+                echo '<br>';
+                echo '<br>';
+
+                $result[date_format($order->created_at, 'F')] += $order->cart->totalPrice;
+            }
+            $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+        ?>
         <script>
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["Januar", "Febraur", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+                    labels: <?php echo json_encode($months); ?>,
                     datasets: [{
-                        label: '# of Orders',
-                        data: [12, 19, 3, 5, 2, 3, 8, 12, 19, 3, 5, 2, 3, 8],
+                        label: 'test',
+                        data: <?php echo json_encode(array_values($result));?>,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(51, 153, 255, 0.2)',
+                            'rgba(45, 89, 134, 0.2)',
+                            'rgba(102, 0, 102, 0.2)',
+                            'rgba(255, 102, 0, 0.2)',
+                            'rgba(102, 0, 0, 0.2)',
+                            'rgba(102, 51, 0, 0.2)',
+                            'rgba(255, 255, 0, 0.2)',
+                            'rgba(159, 255, 128, 0.2)',
+                            'rgba(0, 153, 51, 0.2)',
+                            'rgba(0, 51, 0, 0.2)',
+                            'rgba(71, 107, 107, 0.2)',
+                            'rgba(0, 0, 77, 0.2)'
                         ],
                         borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgba(51, 153, 255, 1)',
+                            'rgba(45, 89, 134, 1)',
+                            'rgba(102, 0, 102, 1)',
+                            'rgba(255, 102, 0, 1)',
+                            'rgba(102, 0, 0, 1)',
+                            'rgba(102, 51, 0, 1)',
+                            'rgba(255, 255, 0, 1)',
+                            'rgba(159, 255, 128, 1)',
+                            'rgba(0, 153, 51, 1)',
+                            'rgba(0, 51, 0, 1)',
+                            'rgba(71, 107, 107, 1)',
+                            'rgba(0, 0, 77, 1)'
                         ],
                         borderWidth: 1
                     }]
@@ -98,7 +115,7 @@
                     },
                     title: {
                         display: true,
-                        text: 'My Orders'
+                        text: 'Money Spent per Month'
                     }
                 }
             });

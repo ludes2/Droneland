@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserUpdate;
 
@@ -16,15 +18,21 @@ class UserController extends Controller
 
     public function myAccount(){
         $user = Auth::user();
-        $orders = $user->orders;
-        $orders->transform(function($order, $key){
+         $orders = $user->orders;
+        //$orders = Order::selectRaw('user_id, date_format(created_at, \'%M\') month, cart')->where('user_id', $user)->sortBy('month');
+        $orders->transform(function($order){
             $order->cart = unserialize($order->cart);
             return $order;
         });
 
+        $collection = collect($orders);
+
+
+
         return view('user.user_account', [
             'user'      => $user,
-            'orders'    => $orders
+            'orders'    => $orders,
+            'collection'    => $collection
         ]);
     }
 
