@@ -90,7 +90,8 @@ return [
     // user_profile
     'my_orders'         => 'My Orders',
     'amount_payed'      => 'Amount payed',
-    'orderdate'         => 'Orderdate'
+    'orderdate'         => 'Orderdate',
+    'chart_title'       => 'Money spent per month'
 
 
 ];
